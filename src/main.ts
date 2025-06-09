@@ -5,6 +5,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { AllExceptionsFilter } from './middlewares/exception.filter';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +18,21 @@ async function bootstrap() {
     .build();
 
   app.setGlobalPrefix('api/v1');
+
+  const configuration = app.get(ConfigService);
+
+  const originStrings = configuration.get<string>('ORIGINS');
+  let origins: string[] = [];
+
+  if (originStrings) {
+    origins = originStrings.split(',');
+  }
+
+  //! Cors
+  app.enableCors({
+    credentials: true,
+    origin: origins,
+  });
 
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
