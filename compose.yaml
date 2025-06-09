@@ -1,0 +1,30 @@
+services:
+  redis:
+    restart: unless-stopped
+    image: redis:7.4.0
+    ports:
+      - "6379:6379"
+  postgres:
+    restart: unless-stopped
+    image: postgres:17.0
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: init
+      POSTGRES_HOST_AUTH_METHOD: trust
+  app:
+    restart: unless-stopped
+    build: 
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+    environment:
+      - PORT=3000
+    env_file:
+      - .env
+    depends_on:
+      - redis
+      - postgres
+ 
