@@ -14,10 +14,12 @@ export class UserDto {
   @ApiProperty()
   emailAddress: string;
 
+  @HelperService.Trim()
   @IsString()
   @ApiProperty()
   firstName: string;
 
+  @HelperService.Trim()
   @IsString()
   @ApiProperty()
   lastName: string;

@@ -14,7 +14,7 @@ import { ResponseHelper } from 'src/services/response-helper';
 import { Response } from 'express';
 import { ResetPasswordDto } from './dtos/reset-password.dto';
 import { ForgotPasswordDto } from './dtos/forgot-password.dto';
-import { RegisterDto } from './dtos/register.dto';
+import { CreateUserDto } from 'src/models/user/user.dto';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -37,7 +37,7 @@ export class AuthController {
   @ApiCreatedResponse({ type: ApiResponse<{ id: string }> })
   @Post('register')
   async register(
-    @Body() createUserDto: RegisterDto,
+    @Body() createUserDto: CreateUserDto,
     @Res({ passthrough: true }) res: Response,
   ) {
     const userId = await this.authService.register(createUserDto);
