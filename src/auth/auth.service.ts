@@ -100,7 +100,6 @@ export class AuthService {
       const otp = await this.securityService.genOtpAsync(
         user.emailAddress,
         IdentifierEnum.EMAIL,
-        600, // 10 minutes
       );
 
       this.mailService.sendVerificationEmail({
