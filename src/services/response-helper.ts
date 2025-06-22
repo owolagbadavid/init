@@ -15,6 +15,17 @@ export class ResponseHelper {
     );
   }
 
+  static noContent(res: Response, message?: string) {
+    res.status(HttpStatus.NO_CONTENT);
+
+    return new ApiResponse<string>(
+      true,
+      undefined,
+      message ?? this.statusText(HttpStatus.NO_CONTENT),
+      HttpStatus.NO_CONTENT,
+    );
+  }
+
   static ok<T>(res: Response, data: T, message?: string) {
     res.status(HttpStatus.OK);
 

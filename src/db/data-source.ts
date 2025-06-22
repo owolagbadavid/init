@@ -1,10 +1,32 @@
 import 'dotenv/config';
 import { DataSource, DataSourceOptions } from 'typeorm';
-import { FederatedAuth, User, UserProfile } from './entities';
+import {
+  Desktop,
+  DesktopFile,
+  DesktopIcon,
+  DesktopIconFile,
+  FederatedAuth,
+  FileRecord,
+  User,
+  UserProfile,
+  Widget,
+  WidgetType,
+} from './entities';
 
 export const dataSourceOptions: DataSourceOptions = {
   synchronize: true,
-  entities: [User, UserProfile, FederatedAuth],
+  entities: [
+    User,
+    UserProfile,
+    FederatedAuth,
+    Desktop,
+    DesktopFile,
+    DesktopIconFile,
+    DesktopIcon,
+    Widget,
+    WidgetType,
+    FileRecord,
+  ],
   type: 'postgres',
   host: process.env.DB_HOST || 'localhost',
   port: parseInt(process.env.DB_PORT as string) || 5432,

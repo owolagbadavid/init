@@ -19,6 +19,7 @@ import { FederatedAuth } from './federated-auth.entity';
 import { UserStatus } from 'src/models/user/user-status';
 import { UserRole } from 'src/models/user/user-role';
 import { PasswordHasher } from 'src/security/security.service';
+import type { Desktop } from './desktop.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseModel {
@@ -57,4 +58,7 @@ export class User extends BaseModel {
 
   @OneToMany('FederatedAuth', 'user')
   federatedAuths?: FederatedAuth[];
+
+  @OneToOne('Desktop', 'user', { nullable: true })
+  desktop?: Desktop;
 }

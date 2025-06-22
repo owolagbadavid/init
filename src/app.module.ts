@@ -11,6 +11,7 @@ import { MailModule } from './mail/mail.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from './db/data-source';
 import { JwtModule } from '@nestjs/jwt';
+import { DesktopsModule } from './desktops/desktops.module';
 
 const cacheConfig: CacheModuleAsyncOptions = {
   isGlobal: true,
@@ -43,6 +44,7 @@ const cacheConfig: CacheModuleAsyncOptions = {
       global: true,
     }),
     MailModule,
+    DesktopsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

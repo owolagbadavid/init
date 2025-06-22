@@ -18,16 +18,16 @@ COPY . .
 RUN npx nest build
 
 # Stage 2: Production runtime
-FROM gcr.io/distroless/nodejs20-debian11
+# FROM gcr.io/distroless/nodejs20-debian11
 
-WORKDIR /app
+# WORKDIR /app
 
-# Copy necessary files from builder
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
+# # Copy necessary files from builder
+# COPY --from=builder /app/package*.json ./
+# COPY --from=builder /app/node_modules ./node_modules
+# COPY --from=builder /app/dist ./dist
 
 
 # Run the application
-CMD ["dist/main.js"]
-# CMD ["npm", "run", "start:dev"]
+# CMD ["dist/main.js"]
+CMD ["npm", "run", "start:dev"]
