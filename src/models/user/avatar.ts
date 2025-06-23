@@ -2,14 +2,14 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class Avatar {
   @ApiProperty()
-  Style: string;
+  style: string;
 
   @ApiProperty()
-  Seed: string;
+  seed: string;
 
   @ApiProperty()
-  Url: string;
+  url: string;
 
   @ApiProperty()
-  Color: string;
+  color: string;
 }
