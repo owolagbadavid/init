@@ -6,7 +6,7 @@ export const PAGINATION_DEFAULT_SORT_ORDER = 'desc';
 
 // JWT constants
 export const JWT_DEFAULT_SECRET = 'secretKey123';
-export const JWT_DEFAULT_EXPIRATION_SECONDS = 3600;
+export const JWT_DEFAULT_EXPIRATION_SECONDS = 604800;
 export const JWT_DEFAULT_ISSUER = 'myAppIssuer';
 export const JWT_DEFAULT_AUDIENCE = 'myAppAudience';
 

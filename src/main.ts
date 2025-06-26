@@ -28,6 +28,8 @@ async function bootstrap() {
     origins = originStrings.split(',');
   }
 
+  console.log(origins);
+
   //! Cors
   app.enableCors({
     credentials: true,
