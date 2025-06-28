@@ -4,6 +4,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  Unique,
   VirtualColumn,
 } from 'typeorm';
 
@@ -13,6 +14,7 @@ import type { DesktopIconFile } from './desktop-icon-file';
 import { DesktopIconFileEnum } from 'src/models/enums';
 
 @Entity({ name: 'desktop_icons' })
+@Unique(['code'])
 export class DesktopIcon extends BaseModel {
   @Column({ name: 'code', type: 'text' })
   code: string;
