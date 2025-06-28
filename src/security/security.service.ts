@@ -61,9 +61,11 @@ export class SecurityService implements ISecurityService {
         this.configService.get<string>('JWT_ISSUER') || JWT_DEFAULT_ISSUER,
       audience:
         this.configService.get<string>('JWT_AUDIENCE') || JWT_DEFAULT_AUDIENCE,
-      expiryInSeconds:
-        this.configService.get<number>('JWT_EXPIRY_SECONDS') ??
-        JWT_DEFAULT_EXPIRATION_SECONDS,
+      expiryInSeconds: parseInt(
+        this.configService.get<string>('JWT_EXPIRY_SECONDS') ||
+          `${JWT_DEFAULT_EXPIRATION_SECONDS}`,
+        10,
+      ),
     };
   }
 

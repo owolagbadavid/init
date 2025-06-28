@@ -20,8 +20,8 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "3000:3000"
-    # volumes:
-    #   - ./src:/app/src
+    volumes:
+      - ./src:/app/src
     environment:
       - PORT=3000
     env_file:
