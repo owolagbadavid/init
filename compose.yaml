@@ -12,6 +12,8 @@ services:
     environment:
       POSTGRES_DB: init
       POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
   app:
     restart: unless-stopped
     build: 
