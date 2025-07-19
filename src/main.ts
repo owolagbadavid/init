@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import 'reflect-metadata';
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import { AllExceptionsFilter } from './middlewares/exception.filter';
 import { ConfigService } from '@nestjs/config';
+import { GlobalHttpExceptionFilter } from './interceptors/exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -36,8 +36,7 @@ async function bootstrap() {
     origin: origins,
   });
 
-  const { httpAdapter } = app.get(HttpAdapterHost);
-  app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
+  app.useGlobalFilters(new GlobalHttpExceptionFilter());
 
   const document = SwaggerModule.createDocument(app, config);
 

@@ -8,3 +8,5 @@ export * from './desktop.entity';
 export * from './widget.entity';
 export * from './widget-type.entity';
 export * from './file-record.entity';
+export * from './file-content.entity';
+export * from './file.entity';

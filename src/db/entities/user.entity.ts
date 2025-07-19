@@ -20,6 +20,7 @@ import { UserStatus } from 'src/models/user/user-status';
 import { UserRole } from 'src/models/user/user-role';
 import { PasswordHasher } from 'src/security/security.service';
 import type { Desktop } from './desktop.entity';
+import type { FileEntity } from './file.entity';
 
 @Entity({ name: 'users' })
 export class User extends BaseModel {
@@ -61,4 +62,7 @@ export class User extends BaseModel {
 
   @OneToOne('Desktop', 'user', { nullable: true })
   desktop?: Desktop;
+
+  @OneToMany('FileEntity', 'user', { nullable: true })
+  files?: FileEntity[];
 }

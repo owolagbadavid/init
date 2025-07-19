@@ -11,6 +11,8 @@ import {
   UserProfile,
   Widget,
   WidgetType,
+  FileContent,
+  FileEntity,
 } from './entities';
 
 export const dataSourceOptions: DataSourceOptions = {
@@ -26,6 +28,8 @@ export const dataSourceOptions: DataSourceOptions = {
     Widget,
     WidgetType,
     FileRecord,
+    FileContent,
+    FileEntity,
   ],
   type: 'postgres',
   host: process.env.DB_HOST || 'localhost',
