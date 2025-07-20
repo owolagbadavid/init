@@ -22,6 +22,8 @@ const cacheConfig: CacheModuleAsyncOptions = {
       stores: [
         createKeyv({
           url: `redis://${configService.get('REDIS_HOST')}:${configService.get('REDIS_PORT')}`,
+          password: configService.get('REDIS_PASSWORD'),
+          username: configService.get('REDIS_USERNAME'),
           options: {
             socket: {
               tls: configService.get('REDIS_TLS') === 'true' ? true : undefined,
